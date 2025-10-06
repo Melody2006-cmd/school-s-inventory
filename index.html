@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="page active">
+        <div class="login-box">
+            <h2>Inventory Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="dashboard" class="page">
+        <header>
+            <h1>📦 Product Inventory System</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </header>
+
+        <nav class="menu">
+            <button onclick="showSection('addSection')">➕ Add / Edit / Delete</button>
+            <button onclick="showSection('monitorSection')">📊 Monitor Stock</button>
+            <button onclick="showSection('searchSection')">🔍 Search Item</button>
+            <button onclick="showSection('reportSection')">🧾 Generate Report</button>
+        </nav>
+
+        <main>
+            <!-- ADD/EDIT/DELETE SECTION -->
+            <section id="addSection" class="content-section">
+                <h2>Manage Products</h2>
+                <input type="text" id="productName" placeholder="Product Name">
+                <input type="number" id="productQty" placeholder="Quantity">
+                <input type="number" id="productPrice" placeholder="Price">
+                <div class="btn-group">
+                    <button onclick="addProduct()">Add</button>
+                    <button onclick="editProduct()">Edit</button>
+                    <button onclick="deleteProduct()">Delete</button>
+                </div>
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- MONITOR SECTION -->
+            <section id="monitorSection" class="content-section hidden">
+                <h2>Stock Monitor</h2>
+                <table id="monitorTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <!-- SEARCH SECTION -->
+            <section id="searchSection" class="content-section hidden">
+                <h2>Search Item</h2>
+                <input type="text" id="searchInput" placeholder="Enter product name">
+                <button onclick="searchItem()">Search</button>
+                <p id="searchResult"></p>
+            </section>
+
+            <!-- REPORT SECTION -->
+            <section id="reportSection" class="content-section hidden">
+                <h2>Inventory Report</h2>
+                <button onclick="generateReport()">Generate</button>
+                <table id="reportTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="totalValue"></p>
+            </section>
+        </main>
+
+        <!-- ACTIVITY LOG -->
+        <footer>
+            <h2>Activity Log</h2>
+            <ul id="activityLog"></ul>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
